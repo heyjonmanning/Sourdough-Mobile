@@ -1,0 +1,18 @@
+{% include 'slideshow' %}
+
+{% assign article = pages.frontpage %}
+{% unless article.content == "" %}
+	<h2>{{ article.title }}</h2>
+	{{ article.content }}
+{% endunless %}
+
+<div class="featured">
+	<h2>Featured Products</h2>
+	{% for product in collections.frontpage.products limit:3 %}
+		<a href="{{ product.url | within: collection }}">
+			{{ product.featured_image | product_img_url:'large' | img_tag: product.title }}
+			{{ product.title }}<br />
+			{{ product.price | money }}
+		</a>
+	{% endfor %}
+</div> <!-- end .featured -->

@@ -1,0 +1,123 @@
+@charset "UTF-8";
+/* CSS Document */
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain)*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, u, center, dl, dt, dd, ol, ul, li,fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {margin:0; padding:0; border:0; font-size:100%; font:inherit; vertical-align:baseline;} /* HTML5 display-role reset for older browsers */article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;} body {line-height:1;} ol, ul {list-style:none;} blockquote, q {quotes:none;} blockquote:before, blockquote:after, q:before, q:after {content:''; content: none;} table {border-collapse:collapse; border-spacing:0;} a, a img, input, textarea {outline:none;}
+
+/* WEBFONTS */
+.opensans {font-family:'Open Sans', sans-serif;}
+{% assign o = "'Open Sans', sans-serif" %}
+
+/* GLOBAL */
+body {font-family:{{ o }};}
+.main {padding:0 1em 1em; line-height:1.25em;}
+h1 {font-size:2em; text-transform:uppercase; line-height:1.2em; margin:1em 0; text-align:center;}
+h2 {font-size:1.5em; line-height:1.2; margin:1em 0; text-align:center;}
+h3 {font-size:1.25; margin:1em 0; text-align:center; text-transform:uppercase;}
+a {color:#000; text-decoration:underline;}
+.clear {width:100%; height:0; clear:both; display:block;}
+
+	/* Header */
+	.header {text-align:center;}
+	.header select {margin:2em 0; width:75%;}
+	.header h1 a {text-decoration:none;}
+	
+	/* Mini Cart */
+	.mini-cart {height:2em; line-height:2em; text-transform:lowercase; font-size:.9em; background:#000;}
+	.mini-cart a {text-decoration:none; color:#fff;}
+
+	/* Navigation */
+	.nav {margin:1em 0 0;}
+	.nav a {text-transform:uppercase; font-size:90%; text-decoration:none; color:#000;}
+	
+	/* Footer */
+	.footer {text-align:center; padding:1em 0; background:#000; color:#fff; text-transform:lowercase; font-size:75%;}
+	.footer a {text-decoration:none; color:#fff;}
+	.footer form {margin:0 0 1em;}
+	.social {margin:0 0 1em;}
+	
+/* INDEX */
+.featured a {display:block; text-decoration:none; text-align:center; background:#eeeeee; padding:1em; margin:0 0 1em;}
+.featured img {display:block; margin:0 auto .5em;}
+.bxslider {margin:1em 0;}
+.bxslider img {display:block; margin:0 auto;}
+.pager {text-align:center; margin:.5em 0;}
+.pager div {display:inline;}
+.pager a {text-decoration:none; margin:0 .5em;}
+@media only screen and (max-width : 320px) {
+	.featured img {max-width:250px; height:auto;}
+	.bxslider img {max-width:288px;}
+}
+@media only screen and (min-width : 321px) {
+	.featured img {max-width:400px; height:auto;}
+	.bxslider img {max-width:368px;}
+}
+
+/* COLLECTION */
+.collection table {border-spacing:.5em; border-collapse:separate;}
+.collection td {background:#eeeeee; padding:.5em; text-align:center; font-size:.75em;}
+.collection table a {text-decoration:none;}
+.collection table img {display:block; margin:0 auto .25em;}
+@media only screen and (max-width : 320px) {
+	.collection table img {max-width:120px; height:auto;}
+}
+@media only screen and (min-width : 321px) {
+	.collection table img {max-width:200px; height:auto;}
+}
+.paginate {text-align:center; font-size:.75em; text-transform:uppercase; margin:.5em 0;}
+.paginate a {text-decoration:none; margin:.5em;}
+
+/* PRODUCT */
+.product h2 {text-transform:uppercase;}
+.product .product-form select {display:block; margin:0 0 1em;}
+.product .product-form button {display:block; margin:0 auto 1em;}
+#featured-img {display:block; margin:0 auto;}
+.alt {width:250px; margin:.5em auto;}
+.alt img {display:block; float:left; margin:0 5px 5px 0;}
+.alt .three img {margin:0 0 5px;}
+.share {text-align:center; margin:0 0 1em;}
+@media only screen and (max-width : 320px) {
+	.product img {width:250px; height:auto;}
+	.alt img {width:80px;}
+}
+@media only screen and (min-width : 321px) {
+	.product img {width:400px; height:auto;}
+	.alt img {width:130px;}
+}
+
+/* CART */
+th {text-align:left; padding:0 .25em 0 0;}
+td {padding:0 .25em 0 0; font-size:.75em;}
+.cart table input {text-align:center;}
+.cart-form h3 {text-align:left;}
+.cart-form button {display:block; margin:.5em 0 0;} 
+
+/* CUSTOMER ACCOUNTS */
+#create_customer input, #customer_login input, #customer_login button, #recover_customer_password input, #recover_customer_password button {display:block;}
+#recover-password {display:none;}
+.account .hint {font-size:75%;}
+.order-details {margin:1em 0 0;}
+.order-details th {font-size:75%;}
+.order-details .quantity {text-align:center;}
+tfoot td {font-weight:bold;}
+.order-details .subtotal td {padding-top:1em;}
+
+/* BLOG */
+.post {padding:1em; background:#eeeeee; margin:0 0 1em;}
+.meta {font-size:.75em; margin:0 0 .5em; text-transform:uppercase;}
+@media only screen and (max-width : 320px) {
+	.post img {max-width:250px; height:auto;}
+}
+@media only screen and (min-width : 321px) {
+	.post img {max-width:400px; height:auto;}
+}
+
+/* ARTICLE */
+.error {color:red;}
+.input-error {border-color:red;}
+.comment {font-size:.85%; margin:.5em 0 1em; padding:.5em; border-bottom:thin solid gray; width:75%;}
+
+/* INFO PAGES */
+
+	/* Contact */
+
+	/* Wishlist */

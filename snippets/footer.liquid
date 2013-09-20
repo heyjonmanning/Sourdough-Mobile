@@ -1,0 +1,10 @@
+<div class="footer">
+	<form action="/search" method="get">
+		<input type="text" name="q" placeholder="{% if search.performed %}{{ search.terms | escape | downcase }}{% else %}search {{ shop.name | downcase }}{% endif %}" />
+		<button type="submit" id="search_submit">search</button>
+	</form>
+	<div class="social">
+		<a href="#twitter">twitter</a> | <a href="#facebook">facebook</a> | <a href="#pinterest">pinterest</a> | <a href="#newsletter">newsletter</a>
+	</div> <!-- end .social -->
+	&copy; {{ 'now' | date: "%Y" }} {{ shop.name }} by <a href="http://zakhardage.com">Zak Hardage</a>	
+</div> <!-- end .footer -->

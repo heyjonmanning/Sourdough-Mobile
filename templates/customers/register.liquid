@@ -1,0 +1,12 @@
+{% layout settings.customer_layout %}
+
+<h2>Create Account</h2>
+
+{% form 'create_customer' %}
+	{{ form.errors | default_errors }}
+	<input type="text" value="" name="customer[first_name]" placeholder="first name" />
+	<input type="text" value="" name="customer[last_name]" placeholder="last name" />
+	<input type="email" value="" name="customer[email]" placeholder="email address" class="{% if form.errors contains 'email' %}input-error{% endif %}" />
+	<input type="password" value="" name="customer[password]" placeholder="password" class="{% if form.errors contains 'password' %}input-error{% endif %}" />
+	<button type="submit">Create Account</button>
+{% endform %}

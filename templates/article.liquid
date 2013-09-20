@@ -1,0 +1,40 @@
+<div class="post">
+	<h3>{{ article.title }}</h3>
+	<div class="meta">Posted by {{ article.author }} on {{ article.created_at | date:"%m.%d.%y" }}</div> <!-- end .meta -->
+   	{{ article.content }}
+	<h3>Comments</h3>
+		{% for comment in article.comments %}
+			<div class="comment">
+				By {{ comment.author }} on {{ comment.created_at | date:"%m.%d.%y" }}<br />
+				{{ comment.content }}
+			</div> <!-- end .comment -->
+		{% endfor %}
+	</ul>
+
+	{% form article %}
+		Leave a comment
+
+		{% if form.posted_successfully? %}
+			{% if blog.moderated? %}
+				<div>Successfully posted your comment.<br />It will have to be approved by the blog owner first before showing up.</div>
+			{% else %}
+				<div>Successfully posted your comment.</div>
+			{% endif %}
+		{% endif %}
+		{% if form.errors %}
+			<div class="error">Not all the fields have been filled out correctly!</div>
+		{% endif %}
+			<input type="text" id="comment_author" name="comment[author]" size="40" placeholder="name" value="{{form.author}}" class="{% if form.errors contains 'author' %}input-error{% endif %}" />
+			<input type="email" id="comment_email" name="comment[email]" size="40" placeholder="email (will not be published)" value="{{form.email}}" class="{% if form.errors contains 'email' %}input-error{% endif %}" />
+			<textarea id="comment_body" name="comment[body]" cols="40" rows="5" placeholder="comment" class="{% if form.errors contains 'body' %}input-error{% endif %}">{{form.body}}</textarea>
+
+		{% if blog.moderated? %}
+			comments have to be approved before showing up
+		{% endif %}    
+		<button type="submit">Post Comment</button>
+	{% endform %}
+
+</div> <!-- end .post -->
+
+
+

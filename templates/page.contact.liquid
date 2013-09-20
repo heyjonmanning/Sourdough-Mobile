@@ -1,0 +1,18 @@
+{{page.title}}
+
+{{page.content}}
+
+{% form 'contact' %}
+	{% if form.posted_successfully? %}
+  		Thanks for contacting us! We&rsquo;ll get back to you soon.
+	{% endif %}
+	{% if form.errors %}
+  		{% for field in form.errors %}
+    		{{ field }} - {{ form.errors.messages[field] }}
+  		{% endfor %}
+	{% endif %}
+	<input type="text" name="contact[name]" placeholder="name" />
+    <input type="text" name="contact[email]" placeholder="email address" class="{% if form.errors contains 'email' %}input-error{% endif %}" />
+    <textarea name="contact[body]" rows="20" cols="20" placeholder="message" class="{% if form.errors contains 'body' %}input-error{% endif %}"></textarea>
+    <button type="submit">send</button>
+{% endform %}

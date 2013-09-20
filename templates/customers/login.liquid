@@ -1,0 +1,41 @@
+{% layout settings.customer_layout %}
+
+<div id="customer-login">
+	<h2>Customer Login</h2>
+
+	{% form 'customer_login' %}
+
+		{{ form.errors | default_errors }}
+
+		<input type="email" placeholder="email address" value="" name="customer[email]" />
+
+		{% if form.password_needed %}
+			<input type="password" placeholder="password" value="" name="customer[password]" />
+			<a class="hint" href="#" onclick="showRecoverPasswordForm();">Forgot your password?</a>
+		{% endif %}
+		<button type="sumbit">Sign In</button>
+	{% endform %}
+</div> <!-- end #customer-login -->
+
+<div id="recover-password">
+	<h2>Reset Password</h2>
+	<p class="hint">We will send you an email to reset your password.</p>
+
+	{% form 'recover_customer_password' %}
+		{{ form.errors | default_errors }}
+
+		<div id="recover_email">
+			<input type="email" placeholder="email address" value="" name="email" />
+		</div>
+        <button type="submit">Submit</button>
+		<p class="hint">or <a href="#recoveremail" onclick="hideRecoverPasswordForm();">Cancel</a></p>
+	{% endform %}
+</div> <!-- end #recover-password -->
+
+{% if shop.checkout.guest_login %}
+	<h2>Guest Login</h2>
+	<p class="hint">Continue checkout as a guest. No sign-up required.</p>
+	{% form 'guest_login' %}
+		<button type="submit">Continue as Guest</button>
+	{% endform %}
+{% endif %}

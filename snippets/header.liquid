@@ -1,0 +1,30 @@
+<div class="header">
+	<div class="mini-cart">
+		{% if customer %}
+			<a href="/account/logout">sign out</a>&nbsp;|&nbsp;<a href="/account">account</a>
+		{% else %}
+			<a href="/account/login">sign in</a>&nbsp;|&nbsp;<a href="/account/register">create account</a>
+		{% endif %}
+		&nbsp;|&nbsp;<a href="/cart">Cart: {{ cart.item_count }} {{ cart.item_count | pluralize:'item','items' }}</a>
+	</div> <!-- end .mini-account -->
+
+	<h1><a href="{{ shop.url }}">{{ shop.name }}</a></h1>
+	{% comment %}<a href="/"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }} home" /></a>{% endcomment %}
+
+	<div class="nav">
+		{% for link in linklists.main-menu.links %}<a href="{{ link.url }}">{{ link.title }}</a>{% unless forloop.last %}&nbsp;|&nbsp;{% endunless %}{% endfor %}
+	</div> <!-- end .nav -->
+	<select id="browse" onchange="browse()">
+		<option>browse by category</option>
+		{% for collection in collections %}
+			{% unless collection.handle == 'frontpage' %}
+				<option value="{{ shop.url }}{{ collection.url }}">{{ collection.title }}</option>
+			{% endunless %}
+		{% endfor %}
+	</select>
+</div> <!-- end .header -->
+
+<script type="text/javascript">
+	function browse() {var href = document.getElementById('browse').value; window.location = href;}
+	
+</script>

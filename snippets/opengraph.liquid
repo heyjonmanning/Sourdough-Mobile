@@ -1,0 +1,20 @@
+{% if template contains 'product' %}
+	<meta property="og:title" content="{{ product.title }}" />
+	<meta property="og:url" content="{{ shop.url }}{{ product.url }}" />
+	<meta property="og:image" content="{{ product.featured_image | product_img_url:'large' }}" />
+	<meta property="og:description" content="{{ product.description | newline_to_br | strip_html | truncatewords:50,'' | escape }}" />
+{% elsif template == 'article' %}
+	<meta property="og:title" content="{{ article.title }}" />
+	<meta property="og:url" content="{{ shop.url }}{{ article.url }}" />
+	{% if article.content contains "<img" %}
+		{% assign src = article.excerpt_or_content | split: 'src="' %}
+		{% assign src = src[1] | split:'"' | first | replace:'//cdn','http://cdn' | replace:'http:http://','http://' | remove:'https:'  %}
+		{% if src %}<meta property="og:image" content="{{ src }}" />{% endif %}
+	{% endif %}
+	<meta property="og:description" content="{{ article.content | newline_to_br | strip_html | truncatewords:50,'' | escape  }}" />
+{% else %}
+	<meta property="og:title" content="{{ shop.name }}" />
+	<meta property="og:url" content="{{ shop.url }}" />
+	<meta property="og:image" content="{{ 'logo.png' | asset_url }}" />
+	<meta property="og:description" content="{{ shop.description }}" />
+{% endif %}

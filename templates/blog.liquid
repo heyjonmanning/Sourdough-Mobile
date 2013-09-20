@@ -1,0 +1,13 @@
+<h2>{{page.title}}</h2>
+{% paginate blog.articles by 10 %}
+	{% for article in blog.articles  %}
+		<div class="post">
+			<h3><a href="{{article.url}}">{{ article.title }}</a></h3>
+			<div class="meta">Posted by {{ article.author }} on {{ article.created_at | date:"%m.%d.%y" }}</div> <!-- end .meta -->
+	       	{{ article.content }}
+		</div> <!-- end .post -->
+    {% endfor %}
+    <div class="paginate">
+		{{ paginate | default_pagination }}
+	</div> <!-- end .paginate -->
+{% endpaginate %}

@@ -1,0 +1,29 @@
+<h2>{{ product.title }}</h2>
+<h3>{{ product.price | money }}</h3>
+<form class="product-form" action="/cart/add" method="post">
+	{% if product.variants.size > 1 %}
+		<select id="product-select" name="id">
+			{% for variant in product.variants %}
+				<option value="{{ variant.id }}">{{ variant.title }}</option>
+			{% endfor %}
+		</select>
+	{% else %}
+		<input type="hidden" value="{{ product.variants.first.id }}" name="id" />
+	{% endif %}
+	<button type="submit">ADD TO CART</button>
+</form>
+<img id="featured-img" src="{{ product.featured_image | product_img_url:'grande' }}" alt="{{ product.title | escape }}" />
+<div class="alt">
+	{% if product.images.size > 1 %}
+		{% for image in product.images %}
+			<a class="{% cycle '','','three' %}" href="#{{ forloop.index }}" onclick="alt_images('{{ image | product_img_url:'grande' }}')">{{ image | product_img_url:'compact' | img_tag: product.title }}</a>
+		{% endfor %}
+		<div class="clear"></div>
+	{% endif %}
+</div> <!-- end .alt -->
+<div class="share">
+	<h3>Share Via:</h3>
+	<span class='st_facebook_custom'>facebook</span> | <span class='st_twitter_custom'>twitter</span> | <span class='st_pinterest_custom'>pinterest</span>
+</div> <!-- end .share -->
+<div class="description">{{ product.description }}</div> <!-- end .description -->
+{% for image in product.images %}<img src="{{ image | product_img_url:'grande' }}" alt="hidden" style="display:none" />{% endfor %}
